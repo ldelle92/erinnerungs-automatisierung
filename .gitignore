@@ -1,0 +1,8 @@
+config.yaml
+**/credentials/
+service_account*.json
+logs/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

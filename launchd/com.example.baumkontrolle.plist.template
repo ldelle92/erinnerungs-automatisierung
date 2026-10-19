@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.example.baumkontrolle</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__PROJECT_DIR__/.venv/bin/python3</string>
+        <string>__PROJECT_DIR__/src/main.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__PROJECT_DIR__</string>
+
+    <!-- Laeuft alle 15 Minuten an (nur waehrend der Mac wach ist - launchd
+         weckt den Mac dafuer nicht extra auf und holt einen waehrend des
+         Schlafs verpassten Termin beim naechsten Aufwachen nach). Das
+         Skript selbst merkt sich pro Tag, ob bereits ein Durchlauf
+         erfolgreich war (logs/last_success.txt) und tut sonst nichts -
+         so werden auch laengere Internet-Ausfaelle noch am selben Tag
+         nachgeholt, ohne unnoetig oft echte Arbeit zu verrichten. -->
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <key>StandardOutPath</key>
+    <string>__PROJECT_DIR__/logs/baumkontrolle.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>__PROJECT_DIR__/logs/baumkontrolle.err.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

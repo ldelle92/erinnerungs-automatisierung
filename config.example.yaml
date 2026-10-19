@@ -1,0 +1,52 @@
+# Konfiguration – als config.yaml kopieren und anpassen
+
+google:
+  # Pfad zur JSON-Schlüsseldatei des Google-Service-Accounts (siehe README.md)
+  service_account_json: "credentials/service_account.json"
+  # ID der Google-Tabelle (steht in der URL: .../d/<DIESE_ID>/edit)
+  spreadsheet_id: "<SPREADSHEET_ID>"
+  # Name des Tabellenblatts (Tab-Titel unten im Sheet)
+  worksheet_name: "Kontrollen"
+  # Zeile mit den eigentlichen Spaltenbeschriftungen (Projekt: Nr., Name, ...)
+  header_row: 4
+  # Erste Zeile mit Daten
+  data_start_row: 5
+
+# Spaltennummern (A=1, B=2, ...) passend zur eigenen Tabelle.
+# Die Spalten erinnerung*/antwort* werden rechts an die Tabelle angehängt.
+columns:
+  name: 1
+  vorname: 2
+  strasse: 3
+  plz_ort: 4
+  rechnungsadresse_abweichend: 5
+  letzte_kontrolle_datum: 9
+  projekt_nr: 10
+  kontrollintervall_monate: 12
+  naechster_termin_datum: 13
+  werkvertrag: 14
+  email: 15
+  telefon: 17
+  anmerkungen: 18
+  erinnerung1_gesendet_am: 34
+  antwort_erhalten_am: 35
+  erinnerung2_gesendet_am: 36
+  erinnerung1_entwurf_erstellt_am: 37
+  erinnerung2_entwurf_erstellt_am: 38
+
+automation:
+  # Nach wie vielen Tagen ohne Antwort auf Erinnerung 1 wird Erinnerung 2 erstellt
+  zweite_erinnerung_nach_tagen: 14
+  # Datumsformat, wie es in der Tabelle verwendet wird
+  datumsformat: "%d.%m.%Y"
+  # Optional: nur Zeilen verarbeiten, die ab diesem Datum fällig werden
+  # (praktisch, um einen alten Rückstau beim Start auszuklammern). "" = alle.
+  nur_faellig_ab: ""
+  # Optional: automatischer Lauf nur bis einschließlich diesem Datum. "" = unbegrenzt.
+  aktiv_bis: ""
+
+mail:
+  # Optional: Name des Mail.app-Kontos, von dem neue Entwürfe gesendet
+  # werden sollen (siehe Mail.app > Einstellungen > Accounts). Leer lassen
+  # = Standardkonto. Betrifft nur das Erstellen neuer Entwürfe.
+  von_konto: ""
